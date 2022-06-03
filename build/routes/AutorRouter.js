@@ -21,7 +21,8 @@ class AutorRouter {
     }
     getAutor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('Metodo Get ok Obtener');
+            const autors = yield AutorSchema_1.default.find();
+            res.json({ status: 200, autors });
         });
     }
     // async getAutorId(req:Request, res: Response): Promise<void> {
@@ -35,12 +36,16 @@ class AutorRouter {
     }
     updateAutor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('Metodo put ok Actualizar');
+            const { id } = req.params;
+            const autor = yield AutorSchema_1.default.findByIdAndUpdate(id, req.body, { new: true });
+            res.json({ status: 200, autor });
         });
     }
     deleteAutor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('Metodo Delete ok Eleminar');
+            const { id } = req.params;
+            const autor = yield AutorSchema_1.default.findByIdAndDelete(id);
+            res.json({ status: 200, message: 'Autor Eleminado' });
         });
     }
     routes() {

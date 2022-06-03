@@ -8,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const BookSchema_1 = __importDefault(require("../models/BookSchema"));
 class BooksRouter {
     constructor() {
         this.router = (0, express_1.Router)();
@@ -17,24 +21,31 @@ class BooksRouter {
     }
     getBook(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('Metodo Get ok Obtener');
+            const books = yield BookSchema_1.default.find();
+            res.json({ status: 200, books });
         });
     }
     // async getAutorId(req:Request, res: Response): Promise<void> {
     // }
     postBook(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('Metodo Post ok Crear');
+            const newBook = new BookSchema_1.default(req.body);
+            yield newBook.save();
+            res.json({ status: 200, newBook });
         });
     }
     updateBook(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('Metodo put ok Actualizar');
+            const { id } = req.params;
+            const book = yield BookSchema_1.default.findByIdAndUpdate(id, req.body, { new: true });
+            res.json({ status: 200, book });
         });
     }
     deleteBook(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json('Metodo Delete ok Eleminar');
+            const { id } = req.params;
+            const book = yield BookSchema_1.default.findByIdAndDelete(id);
+            res.json({ status: 200, message: 'book Eleminado' });
         });
     }
     routes() {
