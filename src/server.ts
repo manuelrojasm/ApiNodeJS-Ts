@@ -5,7 +5,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import BooksRouter from "./routes/BooksRouter";
-import AutorRouter from "./routes/AutorRouter";
+import AuthorRouter from "./routes/AuthorRouter";
 
 class Server{
     public app: express.Application;
@@ -27,7 +27,7 @@ class Server{
     public Routes (): void {
         //const router: express.Router = express.Router();
         this.app.use('/api/books', BooksRouter)
-        this.app.use('/api/autor', AutorRouter)
+        this.app.use('/api/author', AuthorRouter)
 
     }
 

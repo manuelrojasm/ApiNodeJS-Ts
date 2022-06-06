@@ -13,10 +13,6 @@ class BooksRouter {
         res.json({status:200, books})
     }
 
-    // async getAutorId(req:Request, res: Response): Promise<void> {
-        
-    // }
-
     async postBook(req:Request, res: Response): Promise<void> {
         const newBook = new Book(req.body)
         await newBook.save();
@@ -32,7 +28,7 @@ class BooksRouter {
     async deleteBook(req:Request, res: Response): Promise<void> {
         const {id} = req.params;
         const book = await Book.findByIdAndDelete(id)
-        res.json({status:200, message:'book Eleminado'})         
+        res.json({status:200, message:'Libro Eliminado'})         
     }
 
     routes(){
