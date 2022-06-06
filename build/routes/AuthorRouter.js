@@ -13,45 +13,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const BookSchema_1 = __importDefault(require("../models/BookSchema"));
-class BooksRouter {
+const AuthorSchema_1 = __importDefault(require("../models/AuthorSchema"));
+class AuthorRouter {
     constructor() {
         this.router = (0, express_1.Router)();
         this.routes();
     }
-    getBook(req, res) {
+    getAuthor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const books = yield BookSchema_1.default.find();
-            res.json({ status: 200, books });
+            const authors = yield AuthorSchema_1.default.find();
+            res.json({ status: 200, authors });
         });
     }
-    postBook(req, res) {
+    postAuthor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newBook = new BookSchema_1.default(req.body);
-            yield newBook.save();
-            res.json({ status: 200, newBook });
+            const newAuthor = new AuthorSchema_1.default(req.body);
+            yield newAuthor.save();
+            res.json({ status: 200, newAuthor });
         });
     }
-    updateBook(req, res) {
+    updateAuthor(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
+            const { id } = req.params;
+            const author = yield AuthorSchema_1.default.findByIdAndUpdate(id, req.body, { new: true });
+            res.json({ status: 200, author });
+        });
+    }
+    deleteAuthor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const book = yield BookSchema_1.default.findByIdAndUpdate(id, req.body, { new: true });
-            res.json({ status: 200, book });
-        });
-    }
-    deleteBook(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const book = yield BookSchema_1.default.findByIdAndDelete(id);
-            res.json({ status: 200, message: 'book Eleminado' });
+            const author = yield AuthorSchema_1.default.findByIdAndDelete(id);
+            res.json({ status: 200, message: 'Autor Eliminado' });
         });
     }
     routes() {
-        this.router.get('/', this.getBook);
-        this.router.post('/', this.postBook);
-        this.router.put('/:id', this.updateBook);
-        this.router.delete('/:id', this.deleteBook);
+        this.router.get('/', this.getAuthor);
+        this.router.post('/', this.postAuthor);
+        this.router.put('/:id', this.updateAuthor);
+        this.router.delete('/:id', this.deleteAuthor);
     }
 }
-const bookRouter = new BooksRouter();
-exports.default = bookRouter.router;
+const authorRouter = new AuthorRouter();
+exports.default = authorRouter.router;

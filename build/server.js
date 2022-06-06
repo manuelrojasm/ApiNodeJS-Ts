@@ -10,7 +10,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const BooksRouter_1 = __importDefault(require("./routes/BooksRouter"));
-const AutorRouter_1 = __importDefault(require("./routes/AutorRouter"));
+const AuthorRouter_1 = __importDefault(require("./routes/AuthorRouter"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -28,7 +28,7 @@ class Server {
     Routes() {
         //const router: express.Router = express.Router();
         this.app.use('/api/books', BooksRouter_1.default);
-        this.app.use('/api/autor', AutorRouter_1.default);
+        this.app.use('/api/author', AuthorRouter_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
