@@ -8,7 +8,7 @@
     "dev": "nodemon source/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Maura Tamayo",
+  "author": "Maura Tamayo / Manuel Rojas",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
