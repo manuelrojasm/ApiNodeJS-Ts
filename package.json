@@ -29,7 +29,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.13",
     "helmet": "^4.0.0",
-    "mongoose": "5.7.36",
+    "mongoose": "^5.13.14",
     "morgan": "^1.9.3",
     "nodemon": "^2.0.16"
   }
