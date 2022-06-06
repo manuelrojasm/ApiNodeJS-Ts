@@ -26,7 +26,7 @@
   "devDependencies": {
     "axios": "^0.14.0",
     "compression": "^1.7.2",
-    "cors": "^2.8.12",
+    "cors": "^2.8.5",
     "express": "^4.17.13",
     "helmet": "^4.0.0",
     "mongoose": "5.7.36",
