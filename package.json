@@ -4,6 +4,7 @@
   "description": "Api para consumo de libros",
   "main": "index.js",
   "scripts": {
+    "start": "tsc && node build/index.js",
     "dev": "nodemon source/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

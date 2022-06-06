@@ -43,7 +43,7 @@ class BooksRouter {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const book = yield BookSchema_1.default.findByIdAndDelete(id);
-            res.json({ status: 200, message: 'book Eleminado' });
+            res.json({ status: 200, message: 'Libro Eliminado' });
         });
     }
     routes() {
