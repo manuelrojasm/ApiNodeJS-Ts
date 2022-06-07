@@ -4,33 +4,22 @@
   "engines": {
     "node": "16.x"
   },
-  "description": "Api para consumo de libros",
-  "main": "index.js",
+  "description": "Api para pasar la clase de .Net",
+  "main": "build/index.js",
   "scripts": {
-    "start": "npm install && tsc && node build/index.js",
+    "start": "tsc && node build/index.js",
     "dev": "nodemon source/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Maura Tamayo / Manuel Rojas",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "helmet": "^5.0.2",
+    "helmet": "^5.1.0",
     "mongoose": "^5.13.14",
     "morgan": "^1.10.0",
     "typescript": "^4.7.3"
-  },
-  "devDependencies": {
-    "axios": "^0.14.0",
-    "compression": "^1.7.2",
-    "cors": "^2.8.5",
-    "express": "^4.17.13",
-    "helmet": "^4.0.0",
-    "mongoose": "^5.13.14",
-    "morgan": "^1.9.3",
-    "nodemon": "^2.0.16"
   }
 }
