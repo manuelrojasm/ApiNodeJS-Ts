@@ -1,16 +1,16 @@
 {
   "name": "api-library",
   "version": "1.0.0",
-  "engines": {
-    "node": "16.x"
-  },
+  "engines": { "node": "12.16.3" },
   "description": "Api para pasar la clase de .Net",
-  "main": "build/index",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "tsc && node build/index.js",
-    "dev": "nodemon source/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start": "node dist/index.js", 
+    "postinstall": "tsc", 
+    "watch-node": "nodemon dist/index.js", 
+    "watch-ts": "tsc - w", 
+    "deploy": "git add . && git commit -m Heroku && git push heroku main" 
+},
   "author": "Maura Tamayo / Manuel Rojas",
   "license": "ISC",
   "dependencies": {
