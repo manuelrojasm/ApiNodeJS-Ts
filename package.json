@@ -5,7 +5,8 @@
     "node": "16.x"
   },
   "description": "Api para pasar la clase de .Net",
-  "main": "build/index.js",
+  "main": "build/index",
+  "typings": "build/index",
   "scripts": {
     "start": "tsc && node build/index.js",
     "dev": "nodemon source/server.ts",
